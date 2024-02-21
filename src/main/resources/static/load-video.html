@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="forms-interactive.js"></script>
+</head>
+<body>
+<h1>Welcome to our website!</h1>
+
+<div id="uploadForm" >
+    <h2>Upload Video</h2>
+    <form id="uploadVideoForm" onsubmit="return uploadVideo()">
+        <label>Select Video:</label><br>
+        <input type="file" id="videoFile" accept="video/*" required><br>
+        <br>
+        <button type="submit">Upload</button>
+    </form>
+</div>
+<div id="uploadMessage"></div>
+
+
+</body>
+</html>
