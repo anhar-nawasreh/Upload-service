@@ -20,5 +20,4 @@ public class SignUpRequestDTO {
 
     private String password;
 
-
 }

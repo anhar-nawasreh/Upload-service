@@ -27,17 +27,18 @@ public class LoginController {
     @PostMapping
     public Mono<ResponseEntity<?>> login(@RequestBody SignInRequestDTO signInRequestDTO) {
         return webClientBuilder.build()
-                .post()
+                .get()
                 .uri("http://authentication-service:8082/api/v1/users")
-                .bodyValue(signInRequestDTO)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchangeToMono(response -> {
                     if (response.statusCode().is2xxSuccessful()) {
-                        return Mono.just(ResponseEntity.ok().headers(response.headers().asHttpHeaders()).body(response.bodyToMono(String.class)));
+                        return response.bodyToMono(String.class)
+                                .map(body -> ResponseEntity.ok().headers(response.headers().asHttpHeaders()).body(body));
                     } else {
                         return Mono.just(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
                     }
                 });
+
 
     }
 }
