@@ -21,7 +21,7 @@ public class SignUpController {
     {
         return webClientBuilder.build()
                 .post()
-                .uri("http://localhost:8082/api/v1/users")
+                .uri("http://authentication-service:8082/api/v1/users")
                 .bodyValue(user)
                 .exchangeToMono(response -> {
                     HttpStatus statusCode = (HttpStatus) response.statusCode();

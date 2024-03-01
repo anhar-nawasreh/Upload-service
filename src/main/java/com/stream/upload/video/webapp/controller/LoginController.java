@@ -28,7 +28,7 @@ public class LoginController {
     public Mono<ResponseEntity<?>> login(@RequestBody SignInRequestDTO signInRequestDTO) {
         return webClientBuilder.build()
                 .post()
-                .uri("http://localhost:8082/api/v1/users")
+                .uri("http://authentication-service:8082/api/v1/users")
                 .bodyValue(signInRequestDTO)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchangeToMono(response -> {
